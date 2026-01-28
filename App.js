@@ -1,15 +1,23 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
 
 // Import screens
+import AboutScreen from './screens/AboutScreen';
+import MeditationScreen from './screens/MeditationScreen';
+import JournalScreen from './screens/JournalScreen';
+import AuthScreen from './screens/AuthScreen';
 import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import AdminScreen from './screens/AdminScreen';
 import MoodScreen from './screens/MoodScreen';
 import ChatScreen from './screens/ChatScreen';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 function UserTabNavigator() {
   return (
@@ -116,6 +124,9 @@ function MainNavigator() {
         ) : (
           <Stack.Screen name="UserTabs" component={UserTabNavigator} />
         )}
+        {/* Screen yang dapat dipanggil dari mana saja (contoh: dari HomeScreen) */}
+            <Stack.Screen name="Meditation" component={MeditationScreen} />
+            <Stack.Screen name="Journal" component={JournalScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -63,12 +63,18 @@ const HomeScreen = ({ navigation }) => {
             <Text style={styles.actionText}>Chat AI</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#50E3C2' }]}>
+          <TouchableOpacity 
+          style={[styles.actionCard, { backgroundColor: '#50E3C2' }]}
+            onPress={() => navigation.navigate('Meditation')}
+            >
             <Ionicons name="musical-notes" size={32} color="#FFF" />
             <Text style={styles.actionText}>Meditasi</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.actionCard, { backgroundColor: '#9B59B6' }]}>
+          <TouchableOpacity 
+          style={[styles.actionCard, { backgroundColor: '#9B59B6' }]}
+          onPress={() => navigation.navigate('Journal')}
+          >
             <Ionicons name="journal" size={32} color="#FFF" />
             <Text style={styles.actionText}>Jurnal</Text>
           </TouchableOpacity>
@@ -83,13 +89,18 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.tipText}>
             "Luangkan 5 menit untuk bernapas dalam-dalam. Fokus pada napas dapat mengurangi stres hingga 40%."
           </Text>
-          <TouchableOpacity style={styles.tipButton}>
+          <TouchableOpacity 
+          style={styles.tipButton}
+          onPress={() => {
+            alert('Fitur detail artikel sedang dalam pengembangan')
+          }}
+          >
             <Text style={styles.tipButtonText}>Pelajari Lebih Lanjut</Text>
             <Ionicons name="arrow-forward" size={16} color="#4A90E2" />
           </TouchableOpacity>
         </View>
 
-        {/* Recent Activity */}
+                {/* Recent Activity */}
         <Text style={styles.sectionTitle}>Aktivitas Terbaru</Text>
         <View style={styles.activityList}>
           {[
@@ -106,7 +117,14 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={styles.activityText}>{item.text}</Text>
                 <Text style={styles.activityTime}>{item.time}</Text>
               </View>
-              <Ionicons name="chevron-forward" size={20} color="#BDC3C7" />
+              {/* Ikon Chevron sekarang bisa dipencet */}
+              <TouchableOpacity
+                onPress={() => {
+                  alert(`Detail Aktivitas:\n${item.text}\nWaktu: ${item.time}`);
+                }}
+              >
+                <Ionicons name="chevron-forward" size={20} color="#BDC3C7" />
+              </TouchableOpacity>
             </View>
           ))}
         </View>
